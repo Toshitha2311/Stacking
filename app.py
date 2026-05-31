@@ -269,9 +269,9 @@ with st.sidebar:
 
     st.markdown("**Meta Learner**")
     if task == "Classification":
-        meta_choice = st.selectbox("", ["Logistic Regression", "Random Forest"])
+        meta_choice = st.selectbox("Select Meta Learner", ["Logistic Regression", "Random Forest"])
     else:
-        meta_choice = st.selectbox("", ["Ridge Regression", "Random Forest"])
+        meta_choice = st.selectbox("Select Meta Learner", ["Ridge Regression", "Random Forest"])
 
     st.markdown("---")
     test_size = st.slider("Test Set Size", 0.10, 0.40, 0.20, 0.05)
@@ -394,7 +394,7 @@ with tab_concepts:
         ax.annotate("", xy=(5, 0.8), xytext=(5, 1.2),
             arrowprops=dict(arrowstyle="-|>", color="#f472b6", lw=1.5))
 
-        st.pyplot(fig, use_container_width=True)
+        st.pyplot(fig, width='stretch')
         plt.close()
 
         st.markdown('<div class="section-header">Key Advantages</div>', unsafe_allow_html=True)
@@ -585,7 +585,7 @@ with tab_exp:
                 "font-family": "JetBrains Mono, monospace",
                 "font-size": "0.82rem",
             }).format({col: "{:.4f}" for col in numeric_cols}),
-            use_container_width=True
+            width='stretch'
         )
 
         # ── CHARTS ────────────────────────────────────────────────
@@ -619,7 +619,7 @@ with tab_exp:
                                         f"{val:.3f}", ha="center", fontsize=6.5, color="#9ca3af")
                 fig.suptitle("Base Learners vs Stacking", color="#c084fc", fontsize=10)
                 fig.tight_layout()
-                st.pyplot(fig, use_container_width=True)
+                st.pyplot(fig, width='stretch')
                 plt.close()
 
             # ROC Curves
@@ -638,7 +638,7 @@ with tab_exp:
                 ax.legend(fontsize=6.5, loc="lower right",
                           facecolor="#13161e", edgecolor="#2a2d3a", labelcolor="#9ca3af")
                 fig.tight_layout()
-                st.pyplot(fig, use_container_width=True)
+                st.pyplot(fig, width='stretch')
                 plt.close()
 
             # Confusion matrix for stacking
@@ -652,7 +652,7 @@ with tab_exp:
             ax.set_xlabel("Predicted"); ax.set_ylabel("Actual")
             ax.set_title("Confusion Matrix", color="#c084fc")
             fig.tight_layout()
-            st.pyplot(fig, use_container_width=True)
+            st.pyplot(fig, width='stretch')
             plt.close()
 
         else:  # Regression
@@ -676,7 +676,7 @@ with tab_exp:
                     bars[-1].set_edgecolor("#f472b6"); bars[-1].set_linewidth(2)
                 fig.suptitle("Metric Comparison", color="#c084fc", fontsize=10)
                 fig.tight_layout()
-                st.pyplot(fig, use_container_width=True)
+                st.pyplot(fig, width='stretch')
                 plt.close()
 
             # Actual vs Predicted
@@ -688,7 +688,7 @@ with tab_exp:
                 ax.set_xlabel("Actual"); ax.set_ylabel("Predicted")
                 ax.set_title(f"Stacking — Actual vs Predicted (R²={stack_results['R²']:.3f})")
                 fig.tight_layout()
-                st.pyplot(fig, use_container_width=True)
+                st.pyplot(fig, width='stretch')
                 plt.close()
 
             # Residuals
@@ -702,7 +702,7 @@ with tab_exp:
             axes[1].set_title("Residual Distribution")
             axes[1].set_xlabel("Residual"); axes[1].set_ylabel("Count")
             fig.tight_layout()
-            st.pyplot(fig, use_container_width=True)
+            st.pyplot(fig, width='stretch')
             plt.close()
 
         # ── WINNER ────────────────────────────────────────────────
